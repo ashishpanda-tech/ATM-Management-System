@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Create New PIN</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="form-box">
+
+    <h1>🔐 Create New PIN</h1>
+
+    <p class="subtitle">
+        OTP Verified Successfully
+    </p>
+
+
+    {% with messages = get_flashed_messages() %}
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <div class="message">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
+
+    <form method="POST"
+          action="{{ url_for('reset_pin') }}">
+
+        <label>New PIN</label>
+
+        <input
+            type="password"
+            name="new_pin"
+            placeholder="Enter New 4 Digit PIN"
+            maxlength="4"
+            required
+        >
+
+
+        <label>Confirm New PIN</label>
+
+        <input
+            type="password"
+            name="confirm_pin"
+            placeholder="Confirm New PIN"
+            maxlength="4"
+            required
+        >
+
+
+        <button type="submit">
+            CHANGE PIN
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

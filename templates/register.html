@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Register Account</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="form-box">
+
+    <h1>📝 Register</h1>
+
+    <p class="subtitle">
+        Create New ATM Account
+    </p>
+
+
+    {% with messages = get_flashed_messages() %}
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <div class="message">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
+
+    <form method="POST"
+          action="{{ url_for('register') }}">
+
+        <label>Account Number</label>
+
+        <input
+            type="text"
+            name="account_no"
+            placeholder="Enter Account Number"
+            required
+        >
+
+
+        <label>Full Name</label>
+
+        <input
+            type="text"
+            name="name"
+            placeholder="Enter Full Name"
+            required
+        >
+
+
+        <label>Mobile Number</label>
+
+        <input
+            type="text"
+            name="mobile"
+            placeholder="10 Digit Mobile Number"
+            maxlength="10"
+            required
+        >
+
+
+        <label>Email</label>
+
+        <input
+            type="email"
+            name="email"
+            placeholder="Enter Email"
+            required
+        >
+
+
+        <label>Create PIN</label>
+
+        <input
+            type="password"
+            name="pin"
+            placeholder="4 Digit PIN"
+            maxlength="4"
+            required
+        >
+
+
+        <label>Confirm PIN</label>
+
+        <input
+            type="password"
+            name="confirm_pin"
+            placeholder="Confirm PIN"
+            maxlength="4"
+            required
+        >
+
+
+        <button type="submit">
+            REGISTER
+        </button>
+
+    </form>
+
+
+    <a href="{{ url_for('home') }}"
+       class="back-btn">
+        ← Back to Login
+    </a>
+
+</div>
+
+</body>
+</html>

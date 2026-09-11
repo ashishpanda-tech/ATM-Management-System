@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ATM Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <div class="dashboard-header">
+
+        <div>
+            <h1>🏦 ATM SYSTEM</h1>
+            <p>Welcome, <strong>{{ name }}</strong></p>
+        </div>
+
+        <a href="{{ url_for('logout') }}"
+           class="logout-btn">
+            Logout
+        </a>
+
+    </div>
+
+
+    {% with messages = get_flashed_messages() %}
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <div class="message success">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
+
+    <div class="account-card">
+
+        <p>Account Number</p>
+
+        <h2>{{ account_no }}</h2>
+
+    </div>
+
+
+    <div class="menu-grid">
+
+        <a href="{{ url_for('balance') }}"
+           class="menu-card">
+
+            <div class="menu-icon">💰</div>
+
+            <h3>Check Balance</h3>
+
+            <p>View your current balance</p>
+
+        </a>
+
+
+        <a href="{{ url_for('deposit') }}"
+           class="menu-card">
+
+            <div class="menu-icon">💵</div>
+
+            <h3>Deposit</h3>
+
+            <p>Deposit money into account</p>
+
+        </a>
+
+
+        <a href="{{ url_for('withdraw') }}"
+           class="menu-card">
+
+            <div class="menu-icon">💳</div>
+
+            <h3>Withdraw</h3>
+
+            <p>Withdraw money from account</p>
+
+        </a>
+
+
+        <a href="{{ url_for('statement') }}"
+           class="menu-card">
+
+            <div class="menu-icon">📄</div>
+
+            <h3>Mini Statement</h3>
+
+            <p>View recent transactions</p>
+
+        </a>
+
+
+        <a href="{{ url_for('change_pin') }}"
+           class="menu-card">
+
+            <div class="menu-icon">🔐</div>
+
+            <h3>Change PIN</h3>
+
+            <p>Change your ATM PIN</p>
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

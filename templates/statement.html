@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Mini Statement</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="statement-box">
+
+    <h1>📄 Mini Statement</h1>
+
+    {% if transactions %}
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Previous</th>
+                    <th>New Balance</th>
+                    <th>Date</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for transaction in transactions %}
+
+                <tr>
+
+                    <td>
+                        {{ transaction[0] }}
+                    </td>
+
+                    <td>
+                        ₹{{ transaction[1] }}
+                    </td>
+
+                    <td>
+                        ₹{{ transaction[2] }}
+                    </td>
+
+                    <td>
+                        ₹{{ transaction[3] }}
+                    </td>
+
+                    <td>
+                        {{ transaction[4] }}
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    {% else %}
+
+        <p class="no-data">
+            No transactions found.
+        </p>
+
+    {% endif %}
+
+
+    <a href="{{ url_for('dashboard') }}"
+       class="back-btn">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>

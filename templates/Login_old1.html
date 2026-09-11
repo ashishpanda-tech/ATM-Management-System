@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ATM Management System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <div class="atm-icon">🏦</div>
+
+    <h1>ATM SYSTEM</h1>
+
+    <p class="subtitle">Secure Banking System</p>
+
+    {% with messages = get_flashed_messages() %}
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <div class="message">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
+    <form action="{{ url_for('login') }}"
+          method="POST">
+
+        <label>Account Number</label>
+
+        <input
+            type="text"
+            name="account_no"
+            placeholder="Enter Account Number"
+            required
+        >
+
+        <label>PIN</label>
+
+        <input
+            type="password"
+            name="pin"
+            placeholder="Enter 4 Digit PIN"
+            maxlength="4"
+            required
+        >
+
+        <button type="submit">
+            LOGIN
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Withdraw Money</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="form-box">
+
+    <h1>💳 Withdraw Money</h1>
+
+    {% with messages = get_flashed_messages() %}
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <div class="message">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
+
+    <form method="POST"
+          action="{{ url_for('withdraw') }}">
+
+        <label>Enter Amount</label>
+
+        <input
+            type="number"
+            name="amount"
+            min="1"
+            step="0.01"
+            placeholder="Enter amount"
+            required
+        >
+
+        <button type="submit">
+            WITHDRAW
+        </button>
+
+    </form>
+
+
+    <a href="{{ url_for('dashboard') }}"
+       class="back-btn">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>

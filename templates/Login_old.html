@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ATM Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <h1>🏦 ATM SYSTEM</h1>
+    <h2>LOGIN</h2>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form action="/login" method="POST">
+
+        <label>Account Number</label>
+        <input type="text" name="account_no" placeholder="Enter Account Number">
+
+        <label>PIN</label>
+        <input type="password" name="pin" placeholder="Enter PIN">
+
+        <button type="submit">LOGIN</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
