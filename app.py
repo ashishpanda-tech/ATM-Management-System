@@ -36,7 +36,7 @@ def get_connection():
 @app.route("/")
 def home():
 
-    return render_template("login.html")
+    return render_template("Login.html")
 
 
 # =========================================================
